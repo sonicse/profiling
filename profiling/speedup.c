@@ -13,12 +13,14 @@ frame_stack(PyObject *self, PyObject *args)
     const PyCodeObject* base_code;
     const PySetObject* ignored_frames;
     const PySetObject* ignored_codes;
+    PyObject* frame_stack;
+
     if (!PyArg_ParseTuple(args, "OOOOO", &frame, &base_frame, &base_code,
                                          &ignored_frames, &ignored_codes))
     {
         return NULL;
     }
-    PyObject* frame_stack = PyList_New(0);
+    frame_stack = PyList_New(0);
     if (frame_stack == NULL)
     {
         return NULL;
